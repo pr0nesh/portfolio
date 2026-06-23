@@ -76,9 +76,10 @@
   }
   .profile-img {
     width: 100%; max-width: 300px; aspect-ratio: 1;
-    border-radius: 20px; background: linear-gradient(45deg, #00d4ff, #7b2ff7);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 8rem; color: #fff; box-shadow: 0 20px 50px rgba(0, 212, 255, 0.3);
+    border-radius: 20px;
+    object-fit: cover;
+    border: 3px solid #00d4ff;
+    box-shadow: 0 20px 50px rgba(0, 212, 255, 0.3);
   }
   .about-text p { color: #ccc; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
 
@@ -198,7 +199,7 @@
   <section id="about">
     <h2 class="section-title">About Me</h2>
     <div class="about-content">
-      <div class="profile-img"><i class="fas fa-user"></i></div>
+      <img class="profile-img" src="profile.jpg" alt="Pranesh S">
       <div class="about-text">
         <p>I'm an Associate Robotics Engineer at <strong style="color:#00d4ff;">Goat Robotics</strong>, developing ROS 2 based autonomous robotic applications. I design navigation and localization algorithms for mobile robots and integrate sensors, computer vision modules, and embedded controllers.</p>
         <p>B.E. Robotics & Automation graduate from Sri Ramakrishna Engineering College (CGPA: 8.04/10). Published IEEE research on QR Code Based Indoor Navigation achieving 98.5% detection accuracy. Won "The Best Startup Award" at SREC INNOVATE24.</p>
