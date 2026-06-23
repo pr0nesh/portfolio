@@ -1,0 +1,437 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pranesh S | Associate Robotics Engineer | ROS 2 Developer</title>
+<meta name="description" content="Pranesh S - Associate Robotics Engineer at Goat Robotics. Expertise in ROS 2, Autonomous Mobile Robots, Computer Vision, and Industrial Automation. B.E. Robotics & Automation from SREC.">
+<meta name="keywords" content="Pranesh S, Robotics Engineer, ROS 2, Autonomous Mobile Robots, Goat Robotics, SREC, Coimbatore">
+<meta name="author" content="Pranesh S">
+<meta property="og:title" content="Pranesh S | Associate Robotics Engineer">
+<meta property="og:description" content="Associate Robotics Engineer specializing in ROS 2, AMR, and Computer Vision">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif; }
+  html { scroll-behavior: smooth; }
+  body { background: #0a0a14; color: #fff; overflow-x: hidden; }
+
+  /* Animated Background */
+  .bg-animation {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 20% 30%, rgba(0, 200, 255, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(120, 0, 255, 0.15), transparent 40%),
+                #0a0a14;
+  }
+
+  /* Navbar */
+  nav {
+    position: fixed; top: 0; width: 100%; padding: 20px 8%;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10, 10, 20, 0.85); backdrop-filter: blur(10px);
+    z-index: 1000; border-bottom: 1px solid rgba(0, 200, 255, 0.2);
+  }
+  .logo { font-size: 1.6rem; font-weight: bold; 
+          background: linear-gradient(45deg, #00d4ff, #7b2ff7); 
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .nav-links { display: flex; gap: 30px; list-style: none; }
+  .nav-links a { color: #fff; text-decoration: none; font-weight: 500; transition: 0.3s; }
+  .nav-links a:hover { color: #00d4ff; }
+
+  /* Hero Section */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 0 8%; text-align: center; position: relative;
+  }
+  .hero-content { max-width: 900px; }
+  .hero h3 { font-size: 1.5rem; color: #00d4ff; margin-bottom: 10px; }
+  .hero h1 { font-size: 4.5rem; margin-bottom: 20px; line-height: 1.2; }
+  .hero h1 span { background: linear-gradient(45deg, #00d4ff, #7b2ff7); 
+                  -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p { font-size: 1.2rem; color: #ccc; margin-bottom: 30px; }
+  .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    padding: 12px 30px; border-radius: 30px; text-decoration: none;
+    font-weight: 600; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary { background: linear-gradient(45deg, #00d4ff, #7b2ff7); color: #fff; }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4); }
+  .btn-outline { border: 2px solid #00d4ff; color: #00d4ff; }
+  .btn-outline:hover { background: #00d4ff; color: #0a0a14; }
+
+  /* Sections */
+  section { padding: 100px 8%; }
+  .section-title {
+    text-align: center; font-size: 2.5rem; margin-bottom: 60px;
+    background: linear-gradient(45deg, #00d4ff, #7b2ff7);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  /* About */
+  .about-content {
+    display: grid; grid-template-columns: 1fr 2fr; gap: 50px; align-items: center;
+  }
+  .profile-img {
+    width: 100%; max-width: 300px; aspect-ratio: 1;
+    border-radius: 20px; background: linear-gradient(45deg, #00d4ff, #7b2ff7);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8rem; color: #fff; box-shadow: 0 20px 50px rgba(0, 212, 255, 0.3);
+  }
+  .about-text p { color: #ccc; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+
+  /* Skills */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px; }
+  .skill-card {
+    background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 15px;
+    text-align: center; border: 1px solid rgba(0, 200, 255, 0.2);
+    transition: 0.3s; backdrop-filter: blur(10px);
+  }
+  .skill-card:hover { transform: translateY(-10px); border-color: #00d4ff; box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3); }
+  .skill-card i { font-size: 3rem; color: #00d4ff; margin-bottom: 10px; }
+  .skill-card h4 { color: #fff; }
+
+  /* Projects */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+  .project-card {
+    background: rgba(255, 255, 255, 0.05); border-radius: 20px; overflow: hidden;
+    border: 1px solid rgba(0, 200, 255, 0.2); transition: 0.3s; backdrop-filter: blur(10px);
+  }
+  .project-card:hover { transform: translateY(-10px); border-color: #00d4ff; }
+  .project-img {
+    height: 200px; background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+    display: flex; align-items: center; justify-content: center; font-size: 4rem; color: #fff;
+  }
+  .project-info { padding: 25px; }
+  .project-info h3 { color: #00d4ff; margin-bottom: 10px; }
+  .project-info p { color: #ccc; margin-bottom: 15px; line-height: 1.6; }
+  .project-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px; }
+  .tag { padding: 5px 12px; background: rgba(0, 212, 255, 0.1); border-radius: 15px; 
+         font-size: 0.8rem; color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.3); }
+
+  /* Experience & Education */
+  .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+  .timeline::before {
+    content: ''; position: absolute; left: 20px; top: 0; height: 100%; width: 2px;
+    background: linear-gradient(180deg, #00d4ff, #7b2ff7);
+  }
+  .timeline-item { padding: 20px 20px 20px 60px; position: relative; margin-bottom: 30px; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: 12px; top: 25px; width: 18px; height: 18px;
+    border-radius: 50%; background: #00d4ff; box-shadow: 0 0 20px #00d4ff;
+  }
+  .timeline-item h3 { color: #00d4ff; margin-bottom: 5px; }
+  .timeline-item h4 { color: #fff; margin-bottom: 5px; }
+  .timeline-item .date { color: #999; font-size: 0.9rem; margin-bottom: 10px; }
+  .timeline-item p { color: #ccc; line-height: 1.6; }
+
+  /* Achievements */
+  .achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+  .achievement-card {
+    background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 15px;
+    border-left: 4px solid #00d4ff; transition: 0.3s;
+  }
+  .achievement-card:hover { transform: translateX(10px); background: rgba(0, 212, 255, 0.05); }
+  .achievement-card i { font-size: 2rem; color: #00d4ff; margin-bottom: 15px; }
+  .achievement-card h4 { color: #fff; margin-bottom: 8px; }
+
+  /* Contact */
+  .contact-content { max-width: 600px; margin: 0 auto; text-align: center; }
+  .contact-links { display: flex; justify-content: center; gap: 25px; margin-top: 30px; flex-wrap: wrap; }
+  .contact-links a {
+    width: 60px; height: 60px; border-radius: 50%; background: rgba(255, 255, 255, 0.05);
+    display: flex; align-items: center; justify-content: center;
+    color: #00d4ff; font-size: 1.5rem; border: 1px solid rgba(0, 200, 255, 0.3);
+    transition: 0.3s; text-decoration: none;
+  }
+  .contact-links a:hover { background: #00d4ff; color: #0a0a14; transform: translateY(-5px); }
+  .contact-info { margin-top: 30px; color: #ccc; }
+  .contact-info p { margin: 10px 0; }
+  .contact-info i { color: #00d4ff; margin-right: 10px; }
+
+  /* Footer */
+  footer { text-align: center; padding: 30px; background: rgba(0, 0, 0, 0.3); color: #999; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2.8rem; }
+    .about-content { grid-template-columns: 1fr; text-align: center; }
+    .profile-img { margin: 0 auto; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="bg-animation"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">&lt;Pranesh /&gt;</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h3>Hello, I'm</h3>
+      <h1><span>Pranesh S</span></h1>
+      <h3 style="color:#00d4ff; margin-bottom:20px;">Associate Robotics Engineer | ROS 2 Developer</h3>
+      <p>Associate Robotics Engineer with expertise in Autonomous Mobile Robots, ROS 2, Computer Vision, and Industrial Automation. Building scalable robotic systems for warehouse automation, logistics, and Industry 4.0.</p>
+      <div class="btn-group">
+        <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Get In Touch</a>
+        <a href="https://github.com/pr0nesh" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <div class="profile-img"><i class="fas fa-user"></i></div>
+      <div class="about-text">
+        <p>I'm an Associate Robotics Engineer at <strong style="color:#00d4ff;">Goat Robotics</strong>, developing ROS 2 based autonomous robotic applications. I design navigation and localization algorithms for mobile robots and integrate sensors, computer vision modules, and embedded controllers.</p>
+        <p>B.E. Robotics & Automation graduate from Sri Ramakrishna Engineering College (CGPA: 8.04/10). Published IEEE research on QR Code Based Indoor Navigation achieving 98.5% detection accuracy. Won "The Best Startup Award" at SREC INNOVATE24.</p>
+        <p>Skilled in Python, C++, ROS 2, OpenCV, Raspberry Pi, ESP32, and SolidWorks. Passionate about building scalable robotic systems for warehouse automation, logistics, and smart manufacturing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><i class="fab fa-python"></i><h4>Python</h4></div>
+      <div class="skill-card"><i class="fas fa-code"></i><h4>C / C++</h4></div>
+      <div class="skill-card"><i class="fas fa-robot"></i><h4>ROS / ROS2</h4></div>
+      <div class="skill-card"><i class="fas fa-microchip"></i><h4>Arduino</h4></div>
+      <div class="skill-card"><i class="fas fa-cogs"></i><h4>SolidWorks</h4></div>
+      <div class="skill-card"><i class="fas fa-eye"></i><h4>OpenCV</h4></div>
+      <div class="skill-card"><i class="fas fa-microchip"></i><h4>Raspberry Pi</h4></div>
+      <div class="skill-card"><i class="fas fa-wifi"></i><h4>ESP32</h4></div>
+      <div class="skill-card"><i class="fas fa-project-diagram"></i><h4>PLC & SCADA</h4></div>
+      <div class="skill-card"><i class="fas fa-tools"></i><h4>Git / Linux</h4></div>
+      <div class="skill-card"><i class="fas fa-brain"></i><h4>AI / ML</h4></div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-img"><i class="fas fa-qrcode"></i></div>
+        <div class="project-info">
+          <h3>QR Code Indoor Navigation Robot</h3>
+          <p>Final year project: intelligent indoor navigation using floor-mounted QR codes. 98.5% detection accuracy, 95%+ navigation success. Published in IEEE.</p>
+          <div class="project-tags"><span class="tag">ROS2</span><span class="tag">OpenCV</span><span class="tag">Raspberry Pi</span><span class="tag">ESP32</span></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"><i class="fas fa-route"></i></div>
+        <div class="project-info">
+          <h3>Path Planning for Turtlebot3</h3>
+          <p>Designed maze-solving and autonomous path planning algorithms for TurtleBot3 using ROS2 simulation.</p>
+          <div class="project-tags"><span class="tag">ROS2</span><span class="tag">Python</span><span class="tag">Navigation</span></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"><i class="fas fa-robot"></i></div>
+        <div class="project-info">
+          <h3>ROS2 Auto-Docking</h3>
+          <p>Autonomous docking solution for robots using ROS2, enabling precise positioning and self-recharging capabilities.</p>
+          <div class="project-tags"><span class="tag">ROS2</span><span class="tag">C++</span><span class="tag">Auto-Docking</span></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"><i class="fas fa-recycle"></i></div>
+        <div class="project-info">
+          <h3>AI Sound-Based Trash Bin</h3>
+          <p>Smart waste management system that separates recyclables based on an AI audio classification model.</p>
+          <div class="project-tags"><span class="tag">AI</span><span class="tag">Python</span><span class="tag">IoT</span></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"><i class="fas fa-water"></i></div>
+        <div class="project-info">
+          <h3>Waterhyacinth Removable Bot</h3>
+          <p>Innovative robotic solution addressing environmental issues by removing invasive water hyacinth from water bodies.</p>
+          <div class="project-tags"><span class="tag">Robotics</span><span class="tag">Environment</span></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"><i class="fas fa-hand-paper"></i></div>
+        <div class="project-info">
+          <h3>Sand Core Pick & Place Robot</h3>
+          <p>Designed and developed a robotic system for industrial pick-and-place operations using SolidWorks and automation.</p>
+          <div class="project-tags"><span class="tag">SolidWorks</span><span class="tag">Automation</span></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"><i class="fas fa-cloud-rain"></i></div>
+        <div class="project-info">
+          <h3>Rain Water Detector</h3>
+          <p>Smart monitoring system for rainfall detection using sensor technology, providing real-time alerts.</p>
+          <div class="project-tags"><span class="tag">Arduino</span><span class="tag">Sensors</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Associate Robotics Engineer</h3>
+        <h4>Goat Robotics</h4>
+        <div class="date">Present</div>
+        <p>Develop ROS 2 based autonomous robotic applications. Design navigation and localization algorithms for mobile robots. Integrate sensors, computer vision modules, and embedded controllers. Debug and optimize robotic software performance.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Robotics Intern</h3>
+        <h4>Karthikesh Robotics Private Limited</h4>
+        <div class="date">01/2025 - 02/2025</div>
+        <p>Developed ROS simulation projects and robotic automation solutions. Optimized robot performance for industrial robotics applications.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Robotics Intern</h3>
+        <h4>Thedush Robotics</h4>
+        <div class="date">06/2024 - 07/2024</div>
+        <p>Developed a ROS auto-docking solution for autonomous charging alignment. Implemented autonomous navigation workflows within the ROS ecosystem.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Sand Core Pick & Place Robot</h3>
+        <h4>Alpha Crafting Consultancy</h4>
+        <div class="date">01/2023 - 01/2025</div>
+        <p>Handled robot design, motion planning, automation workflow, mechanical integration, and industrial testing for an industrial pick-and-place robot.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2 class="section-title">Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>B.E. in Robotics and Automation</h3>
+        <h4>Sri Ramakrishna Engineering College</h4>
+        <div class="date">08/2022 - 05/2026 | CGPA: 8.04 / 10</div>
+        <p>Coimbatore, Tamil Nadu. Comprehensive engineering degree focused on robotics, automation, and intelligent systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section id="achievements">
+    <h2 class="section-title">Achievements & Certifications</h2>
+    <div class="achievements-grid">
+      <div class="achievement-card">
+        <i class="fas fa-trophy"></i>
+        <h4>Best Startup Award - SREC INOVATE24</h4>
+        <p>Won "The Best Startup Award" for innovative robotics project at SREC INOVATE24.</p>
+      </div>
+      <div class="achievement-card">
+        <i class="fas fa-medal"></i>
+        <h4>Smart India Hackathon</h4>
+        <p>Participated in India's biggest hackathon, working on innovative tech solutions.</p>
+      </div>
+      <div class="achievement-card">
+        <i class="fas fa-certificate"></i>
+        <h4>ROS2 Workshop Certification</h4>
+        <p>Three-day national level workshop on SLAM Navigation & Autonomous Map Building.</p>
+      </div>
+      <div class="achievement-card">
+        <i class="fas fa-award"></i>
+        <h4>Python for Data Science - Infosys</h4>
+        <p>Certified in Python for Data Science from Infosys Springboard.</p>
+      </div>
+      <div class="achievement-card">
+        <i class="fas fa-robot"></i>
+        <h4>AdroBotics Workshop</h4>
+        <p>Hands-on workshop on advanced robotics technologies and applications.</p>
+      </div>
+      <div class="achievement-card">
+        <i class="fas fa-industry"></i>
+        <h4>Industry 4.0 Certification</h4>
+        <p>Introduction to Industry 4.0 and Industrial Internet of Things (IIoT).</p>
+      </div>
+      <div class="achievement-card">
+        <i class="fas fa-lightbulb"></i>
+        <h4>Social Innovation in Industry 4.0</h4>
+        <p>Certified for social innovation contributions in the Industry 4.0 domain.</p>
+      </div>
+      <div class="achievement-card">
+        <i class="fas fa-bolt"></i>
+        <h4>AI for India 2.0 - GUVI</h4>
+        <p>Completed AI for India 2.0 certification program by GUVI.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-content">
+      <p style="color:#ccc; font-size:1.1rem;">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free 
+to reach out!</p>
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> spraneshsekar@gmail.com</p>
+        <p><i class="fas fa-phone"></i> +91 9345672745</p>
+        <p><i class="fas fa-map-marker-alt"></i> Coimbatore, Tamil Nadu, India</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:spraneshsekar@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/pranesh-s-183a99202" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/pr0nesh" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="tel:+919345672745" title="Phone"><i class="fas fa-phone"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Pranesh S. Built with passion & code. 🤖</p>
+  </footer>
+
+  <script>
+    // Smooth scroll active link highlighting
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= sectionTop - 200) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.style.color = '';
+        if (link.getAttribute('href').substring(1) === current) link.style.color = '#00d4ff';
+      });
+    });
+
+    // Scroll animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.style.opacity = '1', entry.target.style.transform = 'translateY(0)';
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(sec => {
+      sec.style.opacity = '0'; sec.style.transform = 'translateY(30px)';
+      sec.style.transition = '0.8s ease-out'; observer.observe(sec);
+    });
+  </script>
+</body>
+</html>
+
