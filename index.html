@@ -22,19 +22,13 @@
       screens: { sm: '640px', md: '769px', lg: '1024px', xl: '1280px', '2xl': '1536px' },
       extend: {
         colors: {
-          ink: '#0a0a14',
-          accent: '#00d4ff',
-          accent2: '#7b2ff7',
-          muted: '#ccc',
-          dim: '#999',
+          ink: '#0b1120',     // page background
+          accent: '#60a5fa',  // soft blue, used sparingly
+          muted: '#a7b2c4',   // body text
+          dim: '#7c879a',     // secondary text
         },
         fontFamily: {
           sans: ['Inter', 'Segoe UI', 'Tahoma', 'sans-serif'],
-        },
-        backgroundImage: {
-          brand: 'linear-gradient(45deg, #00d4ff, #7b2ff7)',
-          'brand-diag': 'linear-gradient(135deg, #00d4ff, #7b2ff7)',
-          glow: 'radial-gradient(circle at 20% 30%, rgba(0, 200, 255, 0.15), transparent 40%), radial-gradient(circle at 80% 70%, rgba(120, 0, 255, 0.15), transparent 40%)',
         },
       },
     },
@@ -44,86 +38,72 @@
 <!-- Repeated pieces as small components; everything else is utilities in the HTML -->
 <style type="text/tailwindcss">
   @layer components {
-    /* Gradient text (plain CSS so the -webkit- prefixes are kept) */
-    .gradient-text {
-      background-image: linear-gradient(45deg, #00d4ff, #7b2ff7);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .section-title {
+      @apply mb-[56px] text-center text-[2.25rem] font-bold text-slate-100
+             after:mx-auto after:mt-4 after:block after:h-[3px] after:w-12 after:rounded-full after:bg-accent;
     }
-    .section-title { @apply mb-[60px] text-center text-[2.5rem] font-bold; }
-    .sub-title { @apply mb-5 text-center text-[1.5rem] font-bold; }
+    .sub-title { @apply mb-5 text-center text-[1.35rem] font-semibold text-slate-100; }
+    .card { @apply rounded-2xl border border-slate-800 bg-slate-900/60 transition duration-300 hover:border-slate-600; }
+    .icon-box { @apply mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-[1.35rem] text-accent; }
 
     /* Navbar */
-    .nav-links a { @apply font-medium transition-all duration-300 hover:text-accent; }
+    .nav-links a { @apply font-medium text-slate-300 transition duration-300 hover:text-white; }
 
     /* Skills */
-    .skill-card {
-      @apply rounded-[15px] border border-accent/20 bg-white/5 p-[25px] backdrop-blur-[10px] transition-all duration-300
-             hover:-translate-y-2.5 hover:border-accent hover:shadow-[0_10px_30px_rgba(0,212,255,0.3)];
-    }
-    .skill-card i { @apply mb-[15px] text-[2rem] text-accent; }
-    .skill-card h4 { @apply mb-2 text-[1.17em] font-bold; }
+    .skill-card { @apply card p-[25px] hover:-translate-y-1; }
+    .skill-card i { @apply icon-box; }
+    .skill-card h4 { @apply mb-2 text-[1.1rem] font-semibold text-slate-100; }
     .skill-card p { @apply leading-[1.6] text-muted; }
-    .tool-group { @apply rounded-[15px] border border-accent/20 bg-white/5 p-5; }
-    .tool-group h4 { @apply mb-3 text-[0.85rem] font-semibold uppercase tracking-wider text-dim; }
+    .tool-group { @apply card p-5; }
+    .tool-group h4 { @apply mb-3 text-[0.8rem] font-semibold uppercase tracking-wider text-dim; }
     .tool-group div { @apply flex flex-wrap gap-2; }
 
     /* Projects */
-    .project-card {
-      @apply overflow-hidden rounded-[20px] border border-accent/20 bg-white/5 backdrop-blur-[10px] transition-all duration-300
-             hover:-translate-y-2.5 hover:border-accent;
-    }
-    .project-img { @apply flex h-[200px] items-center justify-center bg-brand-diag text-[4rem]; }
+    .project-card { @apply card overflow-hidden hover:-translate-y-1; }
+    .project-img { @apply flex h-[140px] items-center justify-center border-b border-slate-800 bg-slate-800/40 text-[2.75rem] text-accent; }
     .project-info { @apply p-[25px]; }
-    .project-info h3 { @apply mb-2.5 text-[1.17em] font-bold text-accent; }
+    .project-info h3 { @apply mb-2.5 text-[1.1rem] font-semibold text-slate-100; }
     .project-info p { @apply mb-[15px] leading-[1.6] text-muted; }
     .project-tags { @apply mb-[15px] flex flex-wrap gap-2; }
-    .tag { @apply rounded-[15px] border border-accent/30 bg-accent/10 px-3 py-[5px] text-[0.8rem] text-accent; }
+    .tag { @apply rounded-md border border-slate-700 bg-slate-800/60 px-2.5 py-1 text-[0.8rem] text-slate-300; }
     .project-link { @apply inline-flex items-center gap-2 font-semibold text-accent transition-all duration-300 hover:gap-3; }
 
     /* Experience & Education timeline */
-    .timeline {
-      @apply relative mx-auto max-w-[800px]
-             before:absolute before:left-5 before:top-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-accent before:to-accent2;
-    }
+    .timeline { @apply relative mx-auto max-w-[800px] before:absolute before:left-5 before:top-0 before:h-full before:w-px before:bg-slate-700; }
     .timeline-item {
       @apply relative mb-[30px] py-5 pl-[60px] pr-5
-             before:absolute before:left-3 before:top-[25px] before:h-[18px] before:w-[18px] before:rounded-full before:bg-accent before:shadow-[0_0_20px_#00d4ff];
+             before:absolute before:left-[14px] before:top-[26px] before:h-[13px] before:w-[13px] before:rounded-full before:bg-accent before:ring-4 before:ring-ink;
     }
-    .timeline-item h3 { @apply mb-[5px] text-[1.17em] font-bold text-accent; }
-    .timeline-item h4 { @apply mb-[5px] font-bold; }
-    .timeline-item .date { @apply mb-2.5 text-[0.9rem] text-dim; }
+    .timeline-item h3 { @apply mb-[5px] text-[1.15rem] font-semibold text-slate-100; }
+    .timeline-item h4 { @apply mb-[5px] font-medium text-accent; }
+    .timeline-item .date { @apply mb-3 text-[0.9rem] text-dim; }
     .timeline-item p { @apply leading-[1.6] text-muted; }
-    .timeline-item ul { @apply list-disc space-y-1.5 pl-5 leading-[1.6] text-muted marker:text-accent; }
+    .timeline-item ul { @apply list-disc space-y-1.5 pl-5 leading-[1.6] text-muted marker:text-slate-500; }
 
     /* Awards & certifications */
-    .achievement-card {
-      @apply rounded-[15px] border-l-4 border-accent bg-white/5 p-[25px] transition-all duration-300
-             hover:translate-x-2.5 hover:bg-accent/5;
-    }
-    .achievement-card i { @apply mb-[15px] text-[2rem] text-accent; }
-    .achievement-card h4 { @apply mb-2 font-bold; }
-    .cert-item { @apply flex items-start gap-4 rounded-[15px] bg-white/5 p-5; }
-    .cert-item i { @apply mt-0.5 w-6 text-center text-xl text-accent; }
-    .cert-item h4 { @apply font-semibold; }
+    .achievement-card { @apply card p-[25px]; }
+    .achievement-card i { @apply icon-box; }
+    .achievement-card h4 { @apply mb-2 font-semibold text-slate-100; }
+    .achievement-card p { @apply leading-[1.6] text-muted; }
+    .cert-item { @apply card flex items-start gap-4 p-5; }
+    .cert-item i { @apply mt-0.5 w-6 text-center text-lg text-accent; }
+    .cert-item h4 { @apply font-semibold text-slate-100; }
     .cert-item p { @apply mt-1 text-[0.9rem] text-muted; }
 
     /* Contact */
     .contact-link {
-      @apply flex h-[60px] w-[60px] items-center justify-center rounded-full border border-accent/30 bg-white/5 text-2xl text-accent transition-all duration-300
-             hover:-translate-y-[5px] hover:bg-accent hover:text-ink;
+      @apply flex h-[52px] w-[52px] items-center justify-center rounded-full border border-slate-700 bg-slate-900/60 text-xl text-slate-300 transition duration-300
+             hover:-translate-y-0.5 hover:border-accent hover:text-accent;
     }
   }
 </style>
 </head>
-<body class="overflow-x-hidden bg-ink font-sans leading-[normal] text-white">
-  <div class="fixed inset-0 -z-10 bg-ink bg-glow"></div>
+<body class="overflow-x-hidden bg-ink font-sans leading-[normal] text-slate-100">
 
   <!-- Navbar -->
-  <nav class="fixed top-0 z-[1000] w-full border-b border-accent/20 bg-ink/85 backdrop-blur-[10px]">
+  <nav class="fixed top-0 z-[1000] w-full border-b border-slate-800 bg-ink/85 backdrop-blur-[10px]">
     <div class="flex items-center justify-between px-[8%] py-5">
-      <a href="#home" class="gradient-text whitespace-nowrap text-[1.6rem] font-bold">&lt;Pranesh /&gt;</a>
+      <a href="#home" class="whitespace-nowrap text-[1.35rem] font-bold text-slate-100">Pranesh S</a>
       <ul class="nav-links hidden gap-[30px] lg:flex">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -133,9 +113,9 @@
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button id="menu-btn" type="button" class="text-2xl text-accent lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><i class="fas fa-bars"></i></button>
+      <button id="menu-btn" type="button" class="text-2xl text-slate-300 lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><i class="fas fa-bars"></i></button>
     </div>
-    <ul id="mobile-menu" class="nav-links hidden flex-col gap-4 border-t border-accent/20 px-[8%] py-5 lg:hidden">
+    <ul id="mobile-menu" class="nav-links hidden flex-col gap-4 border-t border-slate-800 px-[8%] py-5 lg:hidden">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -148,31 +128,31 @@
 
   <!-- Hero -->
   <section id="home" class="relative flex min-h-screen items-center justify-center px-[8%] text-center">
-    <div class="max-w-[900px]">
-      <p class="mb-2.5 text-[1.5rem] font-bold text-accent">Hello, I'm</p>
-      <h1 class="mb-5 text-[2.8rem] font-bold leading-[1.2] md:text-[4.5rem]"><span class="gradient-text">Pranesh S</span></h1>
-      <p class="mb-5 text-[1.15rem] font-bold text-accent md:text-[1.5rem]">Robotics Engineer · ROS 2 · Autonomous Mobile Robots</p>
-      <p class="mb-[30px] text-[1.2rem] leading-[1.6] text-muted">I build ROS 2 software for warehouse autonomous mobile robots (navigation, safety, docking and mission logic) and take it from the lab to robots running in the field.</p>
-      <div class="flex flex-wrap justify-center gap-5">
-        <a href="#projects" class="inline-flex items-center gap-2 rounded-[30px] bg-brand px-[30px] py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-[3px] hover:shadow-[0_10px_30px_rgba(0,212,255,0.4)]"><i class="fas fa-folder-open"></i> View Projects</a>
-        <a href="#contact" class="inline-flex items-center gap-2 rounded-[30px] border-2 border-accent px-[30px] py-3 font-semibold text-accent transition-all duration-300 hover:bg-accent hover:text-ink"><i class="fas fa-paper-plane"></i> Get In Touch</a>
+    <div class="max-w-[820px]">
+      <p class="mb-3 text-[1.05rem] font-medium tracking-wide text-accent">Hello, I'm</p>
+      <h1 class="mb-5 text-[2.8rem] font-bold leading-[1.15] text-slate-50 md:text-[4rem]">Pranesh S</h1>
+      <p class="mb-5 text-[1.1rem] font-semibold text-slate-300 md:text-[1.35rem]">Robotics Engineer · ROS 2 · Autonomous Mobile Robots</p>
+      <p class="mb-[34px] text-[1.1rem] leading-[1.7] text-muted">I build ROS 2 software for warehouse autonomous mobile robots (navigation, safety, docking and mission logic) and take it from the lab to robots running at customer sites.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#projects" class="inline-flex items-center gap-2 rounded-lg bg-blue-500 px-6 py-3 font-semibold text-white transition duration-300 hover:bg-blue-400"><i class="fas fa-folder-open"></i> View Projects</a>
+        <a href="#contact" class="inline-flex items-center gap-2 rounded-lg border border-slate-600 px-6 py-3 font-semibold text-slate-200 transition duration-300 hover:border-slate-400 hover:bg-white/5"><i class="fas fa-paper-plane"></i> Get In Touch</a>
       </div>
       <div class="mt-[30px] flex justify-center gap-4">
-        <a href="https://www.linkedin.com/in/pranesh-s-183a99202" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="contact-link h-12 w-12 text-xl"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/pr0nesh" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="contact-link h-12 w-12 text-xl"><i class="fab fa-github"></i></a>
-        <a href="mailto:spraneshsekar@gmail.com" aria-label="Email" class="contact-link h-12 w-12 text-xl"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/pranesh-s-183a99202" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="contact-link h-11 w-11 text-lg"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/pr0nesh" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="contact-link h-11 w-11 text-lg"><i class="fab fa-github"></i></a>
+        <a href="mailto:spraneshsekar@gmail.com" aria-label="Email" class="contact-link h-11 w-11 text-lg"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
   </section>
 
   <!-- About -->
   <section id="about" class="px-[8%] py-[100px]">
-    <h2 class="section-title gradient-text">About Me</h2>
-    <div class="grid grid-cols-1 items-center gap-[50px] text-center md:grid-cols-[1fr_2fr] md:text-left">
-      <img class="mx-auto aspect-square w-full max-w-[300px] rounded-[20px] border-[3px] border-accent object-cover shadow-[0_20px_50px_rgba(0,212,255,0.3)] md:mx-0" src="profile.jpg" alt="Pranesh S">
+    <h2 class="section-title">About Me</h2>
+    <div class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-[50px] text-center md:grid-cols-[1fr_2fr] md:text-left">
+      <img class="mx-auto aspect-square w-full max-w-[300px] rounded-2xl border border-slate-700 object-cover md:mx-0" src="profile.jpg" alt="Pranesh S">
       <div>
-        <p class="mb-5 text-[1.05rem] leading-[1.8] text-muted">I'm an Associate Robotics Engineer at <strong class="text-accent">Goat Robotics</strong>, where I build ROS 2 software for autonomous mobile robots that move goods in warehouses. My work covers navigation, safety, docking and load handling, mission logic, and keeping robot software fast and reliable on embedded computers.</p>
-        <p class="mb-5 text-[1.05rem] leading-[1.8] text-muted">Day to day, I take features from design and simulation to testing on real robots, debug issues from field logs, and roll out verified updates across a fleet of robots.</p>
+        <p class="mb-5 text-[1.05rem] leading-[1.8] text-muted">I'm an Associate Robotics Engineer at <strong class="font-semibold text-slate-100">Goat Robotics</strong>, where I build ROS 2 software for autonomous mobile robots that move goods in warehouses. My work covers navigation, safety, docking and load handling, mission logic, and keeping robot software fast and reliable on embedded computers.</p>
+        <p class="mb-5 text-[1.05rem] leading-[1.8] text-muted">Day to day, I take features from design and simulation to testing on real robots, work on-site at customer locations to deploy and support robots, debug issues from field logs, and roll out verified updates across a fleet of robots.</p>
         <p class="mb-5 text-[1.05rem] leading-[1.8] text-muted">I hold a B.E. in Robotics & Automation from Sri Ramakrishna Engineering College. I received the Bright Beginning Award at Goat Robotics' Founders' Day 2025 and won the Best Startup Award at SREC INNOVATE24.</p>
       </div>
     </div>
@@ -180,8 +160,8 @@
 
   <!-- Skills -->
   <section id="skills" class="px-[8%] py-[100px]">
-    <h2 class="section-title gradient-text">Core Expertise</h2>
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-[25px]">
+    <h2 class="section-title">Core Expertise</h2>
+    <div class="mx-auto grid max-w-6xl grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-6">
       <div class="skill-card">
         <i class="fas fa-route"></i>
         <h4>Autonomous Navigation</h4>
@@ -209,8 +189,8 @@
       </div>
       <div class="skill-card">
         <i class="fas fa-screwdriver-wrench"></i>
-        <h4>Field Testing & Debugging</h4>
-        <p>On-robot testing across a robot fleet: bag replay, log analysis, sensor and odometry diagnosis, and verified rollouts.</p>
+        <h4>Field Deployment & Debugging</h4>
+        <p>On-site work at customer locations: deploying and testing robots, bag replay, log analysis, sensor and odometry diagnosis, and verified rollouts.</p>
       </div>
     </div>
 
@@ -245,8 +225,8 @@
 
   <!-- Projects -->
   <section id="projects" class="px-[8%] py-[100px]">
-    <h2 class="section-title gradient-text">Featured Projects</h2>
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] gap-[30px]">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="mx-auto grid max-w-6xl grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] gap-6">
       <div class="project-card">
         <div class="project-img"><i class="fas fa-qrcode"></i></div>
         <div class="project-info">
@@ -318,7 +298,7 @@
 
   <!-- Experience -->
   <section id="experience" class="px-[8%] py-[100px]">
-    <h2 class="section-title gradient-text">Experience</h2>
+    <h2 class="section-title">Experience</h2>
     <div class="timeline">
       <div class="timeline-item">
         <h3>Associate Robotics Engineer</h3>
@@ -329,7 +309,8 @@
           <li>Develop LiDAR safety regions and collision-avoidance behaviour for robots working around people and loads.</li>
           <li>Design state-machine based mission logic with clean error handling and recovery.</li>
           <li>Reduce CPU load on embedded robot computers through profiling and C++ optimisation.</li>
-          <li>Test on real robots, analyse field logs and roll out verified updates across the robot fleet.</li>
+          <li>Visit customer sites to deploy, test and troubleshoot robots in live warehouse operations.</li>
+          <li>Analyse field logs and roll out verified updates across the robot fleet.</li>
         </ul>
       </div>
       <div class="timeline-item">
@@ -355,7 +336,7 @@
 
   <!-- Education -->
   <section id="education" class="px-[8%] py-[100px]">
-    <h2 class="section-title gradient-text">Education</h2>
+    <h2 class="section-title">Education</h2>
     <div class="timeline">
       <div class="timeline-item">
         <h3>B.E. in Robotics and Automation</h3>
@@ -368,8 +349,8 @@
 
   <!-- Awards & Certifications -->
   <section id="achievements" class="px-[8%] py-[100px]">
-    <h2 class="section-title gradient-text">Awards & Certifications</h2>
-    <div class="mx-auto grid max-w-[900px] grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-[25px]">
+    <h2 class="section-title">Awards & Certifications</h2>
+    <div class="mx-auto grid max-w-[900px] grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-6">
       <div class="achievement-card">
         <i class="fas fa-star"></i>
         <h4>Bright Beginning Award - Goat Robotics</h4>
@@ -417,7 +398,7 @@
 
   <!-- Contact -->
   <section id="contact" class="px-[8%] py-[100px]">
-    <h2 class="section-title gradient-text">Get In Touch</h2>
+    <h2 class="section-title">Get In Touch</h2>
     <div class="mx-auto max-w-[600px] text-center">
       <p class="text-[1.1rem] leading-[1.6] text-muted">Have a question about my work or want to connect? Email is the fastest way to reach me.</p>
       <div class="mt-[30px] text-muted">
@@ -425,7 +406,7 @@
         <p class="my-2.5"><i class="fas fa-phone mr-2.5 text-accent"></i> +91 9345672745</p>
         <p class="my-2.5"><i class="fas fa-map-marker-alt mr-2.5 text-accent"></i> Coimbatore, Tamil Nadu, India</p>
       </div>
-      <div class="mt-[30px] flex flex-wrap justify-center gap-[25px]">
+      <div class="mt-[30px] flex flex-wrap justify-center gap-5">
         <a href="mailto:spraneshsekar@gmail.com" title="Email" aria-label="Email" class="contact-link"><i class="fas fa-envelope"></i></a>
         <a href="https://www.linkedin.com/in/pranesh-s-183a99202" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn" class="contact-link"><i class="fab fa-linkedin"></i></a>
         <a href="https://github.com/pr0nesh" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub" class="contact-link"><i class="fab fa-github"></i></a>
@@ -434,7 +415,7 @@
     </div>
   </section>
 
-  <footer class="bg-black/30 p-[30px] text-center text-dim">
+  <footer class="border-t border-slate-800 p-[30px] text-center text-dim">
     <p>&copy; 2026 Pranesh S · Robotics Engineer</p>
   </footer>
 
@@ -463,7 +444,7 @@
       });
       navLinks.forEach(link => {
         link.style.color = '';
-        if (link.getAttribute('href').substring(1) === current) link.style.color = '#00d4ff';
+        if (link.getAttribute('href').substring(1) === current) link.style.color = '#60a5fa';
       });
     });
 
